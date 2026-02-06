@@ -1,0 +1,99 @@
+{
+  "Workspace": "SLINDZA",
+  "Categories": [
+    {
+      "Id": "QUESTIONS",
+      "Title": "Questions",
+      "Kind": 2,
+      "Questions": [
+        {
+          "Title": "How long will my charger last?",
+          "Id": "qqqqqq201",
+          "AssignedAnswers": [
+            {
+              "TopId": "QUESTIONS",
+              "id": "aaaaaa901"
+            }
+          ]
+        },
+        {
+          "Title": "Remote controller doesn't work, let us put some words to see renderening in ChatBot Dlg",
+          "Id": "qqqqqq111",
+          "AssignedAnswers": [
+            {
+              "TopId": "QUESTIONS",
+              "Id": "aaaaaa111"
+            },
+            {
+              "TopId": "QUESTIONS",
+              "id": "aaaaaa112"
+            },
+            {
+              "TopId": "QUESTIONS",
+              "id": "aaaaaa113"
+            },
+            {
+              "TopId": "QUESTIONS",
+              "id": "aaaaaa114"
+            }
+          ],
+          "RelatedFilters": [
+            {
+              "Filter": "Branch offices"
+            }
+          ]
+        },
+        {
+          "Title": "Branch offices",
+          "Id": "qqqqqq112",
+          "AssignedAnswers": [
+            {
+              "TopId": "QUESTIONS",
+              "id": "aaaaaa114"
+            }
+          ]
+        },
+        {
+          "Title": "Nothing works as expected?",
+          "Id": "qqqqqq113",
+          "AssignedAnswers": [
+          ]
+        },
+        { "Title": "Zaboravili ste pravila za naziv domena?" },
+        { "Title": "Ko može da registruje internacionalni domen (.com, .net, .org, .info…)?" },
+        { "Title": "Da li je moguća rezervacija domena pre uplate?" },
+        { "Title": "Da li prilikom registracije domena omogućavate uslugu DNS parking domena?" },
+        { "Title": "Želim da postanem reseller domena i cPanel hosting paketa" },
+        { "Title": "Ko sve može da registruje .СРБ domen?" },
+        { "Title": "Da li mogu da koristim email na svom ćiriličnom domenu?" },
+        { "Title": "Kako da povežem EON Smart Box?" },
+        { "Title": "Kako da preimenujem EON Smart Box?" },
+        { "Title": "Kako da uparim EON daljinski upravljač i EON" },
+        { "Title": "Kako da povežem digitalni prijemnik D3miniSmart Box?" },
+        {
+          "Title": "Remote controller of EON smart box-a, doesn't work"
+        },
+        { "Title": "Podešavanje pozicije ekrana na EON smart box-ukomande" },
+        { "Title": "Podešavanje i promena jezika titla na EON smart box-u" },
+        { "Title": "Podešavanje zvuka na EON smart box-u" },
+        { "Title": "Pokvario mi se D3mini daljinski" },
+        { "Title": "Changed bateries, but it still doesn't work" },
+        { "Title": "Dajte mi listu poslovnica (ne standova)" },
+        {
+          "Title": "Nothing works and no one knows why"
+        },
+        { "Title": "Programski vodič i pregled TV kanala na EON smart boksu" },
+        { "Title": "Kako da koristim TV unazad na EON smart box-u?" },
+        { "Title": "Roditeljska kontrola i promena PIN kod-a na EON smart boksu" },
+        { "Title": "Kako da blokiram kanal?" },
+        { "Title": "Kako da koristim roditeljsku kontrolu?" },
+        { "Title": "Napravi liste omiljenih TV sadržaja i kanala na EON Smart Boxu" },
+        { "Title": "Glasovna pretraga filmova, kanala i sadržaja EON daljinskim upravljačem" },
+        { "Title": "Gledaj Pickbox" },
+        { "Title": "Promeni ime i lozinku svoje WiFi mreže Cisco EPC" },
+        { "Title": "Kako da podnesem zahtev za prenos broja u SBB mrežu?" },
+        { "Title": "xxxxx" }
+      ]
+    }
+  ]
+}

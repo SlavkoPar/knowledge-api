@@ -1,0 +1,37 @@
+{
+  "Workspace": "SLINDZA",
+  "Groups": [
+    {
+      "Id": "QUESTIONS",
+      "Title": "Questions",
+      "Kind": 2,
+      "Answers": [
+        {
+          "Title": "Throw the charger through the window",
+          "Id": "aaaaaa901"
+        },
+        {
+          "Title": "Change the bateries",
+          "Id": "aaaaaa111",
+          "Link": "https://sbb.rs/question/daljinski-od-eon-smart-box-a-ne-reaguje-na-komande/"
+        },
+        {
+          "Title": "Restart ruter and TV, as the Pepa pig does",
+          "Id": "aaaaaa112",
+          "Link": "https://sbb.rs/question/daljinski-od-eon-smart-box-a-ne-reaguje-na-komande/"
+        },
+        {
+          "Title": "Visit our closest branch office, they will change remote controller",
+          "Id": "aaaaaa113",
+          "Link": "https://sbb.rs/podrska/kontakt/prodajna-mesta"
+        },
+        {
+          "Title": "Branch offices (not exposition)",
+          "Link": "https://sbb.rs/podrska/kontakt/prodajna-mesta",
+          "Id": "aaaaaa114"
+        },
+      ]
+
+    }
+  ]
+}

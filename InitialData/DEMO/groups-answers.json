@@ -1,0 +1,182 @@
+{
+  "Workspace": "DEMO",
+  "Groups": [
+    {
+      "Id": "MTS",
+      "Title": "Mts",
+      "Kind": 2,
+      "Groups": [
+        {
+          "Id": "SALE",
+          "Title": "Sale",
+          "Header": "Zainteresovani ste za kupovinu",
+          "Kind": 2,
+          "Groups": [
+            {
+              "Id": "PACKAGES",
+              "Title": "Packages and services",
+              "Header": "h2",
+              "Kind": 2
+            },
+            {
+              "Id": "TEL_TV",
+              "Title": "Phones, TV, additional equipment",
+              "Header": "h3",
+              "Kind": 2,
+              "Groups": [
+                {
+                  "Id": "MOBILE",
+                  "Title": "Mobile phones, tablets, modems, trackers",
+                  "Header": "Izaberite tip uređaja za koji ste zainteresovani",
+                  "Kind": 2,
+                  "Groups": [
+                    {
+                      "Id": "PHONES",
+                      "Title": "Phones",
+                      "Header": "h4",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "TABLETS",
+                      "Title": "Tablets and modems",
+                      "Header": "h5",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "CHILDRENWATCHES",
+                      "Title": "Children watches",
+                      "Header": "h6",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "TRACKERS",
+                      "Title": "Trackers",
+                      "Header": "h7",
+                      "Kind": 2
+                    }
+                  ]
+                },
+                {
+                  "Id": "TELEVISIONS",
+                  "Title": "Televisions, remote controllers, smart watches, headphones, chargers",
+                  "Header": "h8",
+                  "Kind": 2,
+                  "Groups": [
+                    {
+                      "Id": "TV",
+                      "Title": "Televisions",
+                      "Link": "/Groups/TV_null",
+                      "Header": "Izaberite tip uređaja",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "SMARTWATCHES",
+                      "Title": "Smart watches",
+                      "Link": "/Groups/SMARTWATCHES_null",
+                      "Header": "h9",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "HEADPHONES",
+                      "Title": "Head Phones",
+                      "Link": "/Groups/HEADPHONES_null",
+                      "Header": "",
+                      "Kind": 2
+                    },
+                    {
+                      "Id": "CHARGERS",
+                      "Title": "Chargers",
+                      "Link": "/Groups/CHARGERS_null",
+                      "Header": "",
+                      "Kind": 2,
+                      "Answers": [
+                        {
+                          "Title": "Throw the charger through the window",
+                          "Id": "aaaaaa901"
+                        }
+                      ]
+                    },
+                    {
+                      "Id": "REMOTECTRLS",
+                      "Title": "Remote controllers",
+                      "Link": "/Groups/REMOTECTRLS_null",
+                      "Header": "",
+                      "Kind": 2,
+                      "Answers": [
+                        {
+                          "Title": "Change the bateries",
+                          "Id": "aaaaaa111",
+                          "Link": "https://sbb.rs/question/daljinski-od-eon-smart-box-a-ne-reaguje-na-komande/"
+                        },
+                        {
+                          "Title": "Restart ruter and TV, as the Pepa pig does",
+                          "Id": "aaaaaa112",
+                          "Link": "https://sbb.rs/question/daljinski-od-eon-smart-box-a-ne-reaguje-na-komande/"
+                        },
+                        {
+                          "Title": "Visit our closest branch office, they will change remote controller",
+                          "Id": "aaaaaa113",
+                          "Link": "https://sbb.rs/podrska/kontakt/prodajna-mesta"
+                        },
+                        {
+                          "Title": "Branch offices (not exposition)",
+                          "Link": "https://sbb.rs/podrska/kontakt/prodajna-mesta",
+                          "Id": "aaaaaa114"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Id": "PLAYSTATION",
+                  "Title": "Playstation, ostala dodatna oprema",
+                  "Header": "",
+                  "Kind": 2
+                },
+                {
+                  "Id": "SMARTHOME",
+                  "Title": "Smart home - Sijalice, utičnice, kamere, senzori, releji",
+                  "Header": "",
+                  "Kind": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Id": "PROBLEMS",
+          "Title": "Problems and report of failures",
+          "Header": "",
+          "Kind": 2
+        },
+        {
+          "Id": "ACCOUNT",
+          "Title": "Accounts",
+          "Header": "",
+          "Kind": 2
+        },
+        {
+          "Id": "ROMING",
+          "Title": "Roming",
+          "Header": "",
+          "Kind": 2
+        }
+      ]
+    },
+    {
+      "Id": "PRODAJA",
+      "Title": "Prodaja",
+      "Kind": 2
+    },
+    {
+      "Id": "TECHNICAL",
+      "Title": "Technical Support",
+      "Kind": 2
+    },
+    {
+      "Id": "INFO",
+      "Title": "Information",
+      "Kind": 2
+    }
+  ]
+}

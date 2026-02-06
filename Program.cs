@@ -1,0 +1,199 @@
+using Azure.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Identity.Web;
+using Microsoft.IdentityModel.Logging;
+using System.Text.Json.Serialization;
+
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; // TODO ubaci u controller
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpContextAccessor();
+
+// Add services to the container.
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+
+// Specify the Client ID if using user-assigned managed identities
+var clientID = builder.Configuration["Managed_Identity_Client_ID"];
+var credentialOptions = new DefaultAzureCredentialOptions
+{
+    ManagedIdentityClientId = clientID
+};
+var credential = new DefaultAzureCredential(credentialOptions);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddMicrosoftIdentityWebApi(options =>
+            {
+                builder.Configuration.Bind("AzureAd", options);
+                options.Events = new JwtBearerEvents();
+                /// <summary>
+                /// Below you can do extended token validation and check for additional claims, such as:
+                ///
+                /// - check if the caller's tenant is in the allowed tenants list via the 'tid' claim (for multi-tenant applications)
+                /// - check if the caller's account is homed or guest via the 'acct' optional claim
+                /// - check if the caller belongs to right roles or groups via the 'roles' or 'groups' claim, respectively
+                ///
+                /// Bear in mind that you can do any of the above checks within the individual routes and/or controllers as well.
+                /// For more information, visit: https://docs.microsoft.com/azure/active-directory/develop/access-tokens#validate-the-user-has-permission-to-access-this-data
+                /// </summary>
+
+                //options.Events.OnTokenValidated = async context =>
+                //{
+                //    string[] allowedClientApps = { /* list of client ids to allow */ };
+
+                //    string clientappId = context?.Principal?.Claims
+                //        .FirstOrDefault(x => x.Type == "azp" || x.Type == "appid")?.Value;
+
+                //    if (!allowedClientApps.Contains(clientappId))
+                //    {
+                //        throw new System.Exception("This client is not authorized");
+                //    }
+                //};
+            }, options => { builder.Configuration.Bind("AzureAd", options); });
+
+
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy(name: MyAllowSpecificOrigins,
+//                      policy =>
+//                      {
+//                          policy.WithOrigins("https://slavkopar.github.io/knowledge-cosmos")
+//                            .AllowAnyHeader()
+//                            .AllowAnyMethod();
+//                      });
+//});
+
+
+// ...
+
+//builder.Services.AddAzureClients(clientBuilder =>
+//{
+//    clientBuilder.AddSearchClient(builder.Configuration.GetSection("SearchClient"));
+
+//    clientBuilder.AddBlobServiceClient(
+//        new Uri("https://slavkovblob_1765968696819.blob.core.windows.net"), credential);
+//    if (builder.Environment.IsProduction() || builder.Environment.IsStaging())
+//    {
+//        // Managed identity token credential discovered when running in Azure environments
+//        ManagedIdentityCredential credential = new(
+//            ManagedIdentityId.FromUserAssignedClientId(clientID));
+//        clientBuilder.UseCredential(credential);
+//    }
+
+//});
+
+// The error CS1061 indicates that 'JsonOptions' does not have a 'ModelBinderProviders' property.  
+// Based on the provided context, it seems you are trying to configure model binding.  
+// The correct place to configure model binders is in the MVC options, not JsonOptions.  
+// Below is the corrected code:  
+
+builder.Services.AddControllers(options =>
+{
+}).AddJsonOptions(jsonOptions =>
+{
+    jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+    jsonOptions.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
+
+
+builder.Services.AddControllers(options =>
+    {
+    }).AddJsonOptions(jsonOptions =>
+    {
+        jsonOptions.JsonSerializerOptions.PropertyNamingPolicy = null;
+        jsonOptions.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    });
+
+
+builder.Services.AddCors(o => o.AddPolicy("default", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+}));
+
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwaggerGen(setup =>
+{
+    setup.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo
+    {
+        Title = "Weather Forecasts",
+        Version = "v1"
+    });
+});
+
+
+
+/*
+builder.Services.AddIdentity<IdentityUser, IdentityRole>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+        .AddGoogle(options =>
+        {
+            options.ClientId = "[MyGoogleClientId]";
+            options.ClientSecret = "[MyGoogleSecretKey]";
+        });
+*/
+
+
+//builder.Services.AddAuthorization(config =>
+//{
+//    config.AddPolicy("AuthZPolicy", policy =>
+//        policy.RequireRole("Knowledge.Read"));
+//});
+
+builder.Services.AddMemoryCache();
+
+builder.Services.AddResponseCaching();
+
+//builder.Services.AddSingleton<IOpenAIEmbeddingService, OpenAIEmbeddingService>();
+//builder.Services.AddSingleton<IVectorSearchService, VectorSearchService>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+    IdentityModelEventSource.ShowPII = true;
+}
+else
+{
+    app.UseHsts();
+}
+
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+app.UseCors("default"); // UseCors must be called before UseResponseCaching 
+
+app.UseResponseCaching();
+
+app.UseAuthentication();
+//app.UseCors(MyAllowSpecificOrigins);
+app.UseAuthorization();
+
+// ----------------------------------------------------------------------------------
+// Djole, kreiracemo posebnu granu za VectorSearch
+// var vectorSearchService = app.Services.GetRequiredService<IVectorSearchService>();
+// await vectorSearchService.InitializeAsync();
+// ----------------------------------------------------------------------------------
+
+app.MapControllers();
+
+
+app.Run();
+
+
+
