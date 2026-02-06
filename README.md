@@ -1,2 +1,2 @@
-# NewKnowledgeAPI
+# KnowledgeAPI
 Azure Cosmos Core API
